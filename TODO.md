@@ -1,0 +1,1 @@
+- write disko config for mbr partition scheme for testing in a vm

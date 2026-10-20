@@ -2,7 +2,6 @@
 
 - First obtain a NixOS ISO and boot into a live environment
     - [NixOS Download](https://nixos.org/download/)
-    - [Tutorial for booting a live environment](https://www.linux.com/training-tutorials/live-booting-linux/)
 
 - Most of the commands below require root privileges, so you should probably log in as root user before starting the guide
 
@@ -27,7 +26,7 @@ cd nix-config
 
 ```
 # Replace "/dev/your_device" with a device present on your machine.
-nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko ./disko.nix --arg device '"/dev/your_device"'
+nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko ./disko/nvme.nix
 ```
 
 ## Move configuration to mounted disk
@@ -73,7 +72,7 @@ flake.nixosConfigurations = {
 
 ## Install
 
-- Copy the config to /mnt/persist so it doesn't get erased by impermanence
+- If you're using impermanence, copy the config to /mnt/persist so it doesn't get erased
 
 ```
 cd /mnt

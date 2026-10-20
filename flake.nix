@@ -1,9 +1,10 @@
 {
-  description = "My NixOS configuration";
+  description = "my nixos configuration";
 
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     nix-colors.url = "github:misterio77/nix-colors";
     nur.url = "github:nix-community/nur";
     impermanence.url = "github:nix-community/impermanence";
@@ -29,7 +30,7 @@
     };
 
     sops-nix = {
-      url = "github:Mic92/sops-nix";
+      url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -74,7 +75,7 @@
     };
 
     wallpaper-collection = {
-      url = "github:veryfastman/wallpaper-collection";
+      url = "github:domac77/wallpaper-collection";
       flake = false;
     };
 
