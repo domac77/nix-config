@@ -39,20 +39,28 @@
         musnix.nixosModules.musnix
         disko.nixosModules.disko
         {
-          disko.devices {
-            disk = {
-              main = {
+          disko.devices.disk.main = {
                 type = "disk";
                 device = "/dev/vda";
                 content = {
-                  type = "table";
-                  format = "msdos";
+                  type = "gpt";
                   partitions = [
                     {
-                      name = "root";
+                      name = "ESP";
+                      type = "EF00";
                       start = "0";
+                      end = "1G";
+                      content = {
+                        type = "filesystem";
+                        format = "vfat";
+                        mountpoint = "/boot";
+                        mountOptions = [ "umask=0077" ];
+                      };
+                    }
+                    {
+                      name = "root";
+                      start = "1G";
                       end = "100%";
-                      bootable = true;
                       content = {
                         type = "filesystem";
                         format = "ext4";
