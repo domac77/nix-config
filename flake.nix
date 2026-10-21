@@ -31,13 +31,13 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, musnix, disko, ... }: {
     nixosConfigurations.vm = nixpkgs.lib.nixosSystem {
     modules = [
         ./machines/vm/configuration.nix
         ./nixos-modules/source.nix
-        inputs.musnix.nixosModules.musnix
-        inputs.disko.nixosModules.default
+        musnix.nixosModules.musnix
+        disko.nixosModules.disko
         ({
           disko.devices.disk.main = {
             type = "disk";
