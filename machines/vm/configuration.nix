@@ -10,6 +10,7 @@
 
   general-config.enable = true;
   audio.enable = true;
+  musnix.enable = true;
   services.keyd.enable = true;
 
   nix.settings.trusted-users = [
