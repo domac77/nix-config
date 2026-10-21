@@ -1,10 +1,7 @@
 { config, lib, ...}:
-let
-  cfg = config.general-config;
-in {
-  options.general-config.enable = lib.mkEnableOption "system settings to be applied to all systems";
   imports = [
     ./audio.nix
     ./keyd.nix
-  ] ++ (if cfg.enable then [ ./general.nix ] else []);
+    ./general.nix
+  ];
 }
