@@ -34,44 +34,44 @@
   outputs = { self, nixpkgs, musnix, disko, ... }: {
     nixosConfigurations.vm = nixpkgs.lib.nixosSystem {
       modules = [
-          ./machines/vm/configuration.nix
-          ./nixos-modules/source.nix
-          musnix.nixosModules.musnix
-          disko.nixosModules.disko
-          {
-            disko.devices.disk.main = {
-                  type = "disk";
-                  device = "/dev/vda";
+        ./machines/vm/configuration.nix
+        ./nixos-modules/source.nix
+        musnix.nixosModules.musnix
+        disko.nixosModules.disko
+        {
+          disko.devices.disk.main = {
+            type = "disk";
+            device = "/dev/vda";
+            content = {
+              type = "gpt";
+              partitions = [
+                {
+                  name = "ESP";
+                  type = "EF00";
+                  start = "0";
+                  end = "1G";
                   content = {
-                    type = "gpt";
-                    partitions = [
-                      {
-                        name = "ESP";
-                        type = "EF00";
-                        start = "0";
-                        end = "1G";
-                        content = {
-                          type = "filesystem";
-                          format = "vfat";
-                          mountpoint = "/boot";
-                          mountOptions = [ "umask=0077" ];
-                        };
-                      }
-                      {
-                        name = "root";
-                        start = "1G";
-                        end = "100%";
-                        content = {
-                          type = "filesystem";
-                          format = "ext4";
-                          mountpoint = "/";
-                      };
-                    }
-                  ];
-                };
-              };
-            }
-        ];
+                    type = "filesystem";
+                    format = "vfat";
+                    mountpoint = "/boot";
+                    mountOptions = [ "umask=0077" ];
+                  };
+                }
+                {
+                  name = "root";
+                  start = "1G";
+                  end = "100%";
+                  content = {
+                    type = "filesystem";
+                    format = "ext4";
+                    mountpoint = "/";
+                  };
+                }
+              ];
+            };
+          };
+        }
+      ];
     };
   };
 }
