@@ -46,7 +46,7 @@ localFlake:
   home-manager.users.donny =
     { config, ... }:
     {
-      home.stateVersion = lib.mkDefault "21.11";
+      home.stateVersion = lib.mkDefault "26.11";
 
       home.packages =
         with pkgs;
