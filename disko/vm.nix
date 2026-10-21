@@ -10,7 +10,7 @@
           partitions = {
             boot = {
               name = "boot";
-              size = "1M";
+              size = "1G";
               type = "EF02";
             };
             root = {
