@@ -41,7 +41,7 @@
         {
           disko.devices.disk.main = {
             type = "disk";
-            device = "/dev/vda";
+            device = "/dev/disk/by-id/some-disk-id";
             content = {
               type = "table";
               format = "msdos";
