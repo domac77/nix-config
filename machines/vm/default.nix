@@ -14,6 +14,11 @@ localFlake:
     localFlake.inputs.musnix.nixosModules.musnix
   ];
 
+  boot.loader.grub = {
+    enable = true;
+    device = "/dev/vda";
+  };
+
   services.keyd.enable = true;
   services.pipewire.enable = true;
   # dolphinOptimization.enable = true;
