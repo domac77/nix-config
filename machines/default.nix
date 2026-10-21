@@ -23,7 +23,7 @@
         (import ../disko/nvme.nix)
         (flake-parts-lib.importApply ./desktop { inherit config inputs self; })
       ];
-    }
+    };
 
     vm = inputs.nixpkgs.lib.nixosSystem {
       modules = [
@@ -31,6 +31,6 @@
         (import ../disko/vm.nix)
         (flake-parts-lib.importApply ./vm { inherit config inputs self; })
       ];
-    }
+    };
   };
 }
