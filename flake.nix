@@ -34,7 +34,7 @@
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations.vm = nixpkgs.lib.nixosSystem {
       modules = [
-        ./machines/vm/default.nix
+        ./machines/vm/configuration.nix
         ./nixos-modules/source.nix
         inputs.musnix.nixosModules.musnix
         ({
