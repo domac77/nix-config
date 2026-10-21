@@ -6,5 +6,5 @@ in {
   imports = [
     ./audio.nix
     ./keyd.nix
-  ] ++ (lib.mkIf cfg.enable [ ./general.nix ]);
+  ] ++ (if cfg.enable then [ ./general.nix ] else []);
 }
