@@ -33,10 +33,11 @@
 
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations.vm = nixpkgs.lib.nixosSystem {
-      modules = [
+    modules = [
         ./machines/vm/configuration.nix
         ./nixos-modules/source.nix
         inputs.musnix.nixosModules.musnix
+        inputs.disko.nixosModules.default
         ({
           disko.devices.disk.main = {
             type = "disk";
