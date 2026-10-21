@@ -3,10 +3,8 @@
     ./hardware-configuration.nix
   ];
 
-  boot.loader.grub = {
-    enable = true;
-    device = "/dev/vda";
-  };
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   general-config.enable = true;
   audio.enable = true;
