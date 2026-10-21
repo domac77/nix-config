@@ -38,7 +38,7 @@
         ./nixos-modules/source.nix
         musnix.nixosModules.musnix
         disko.nixosModules.disko
-        ({
+        {
           disko.devices.disk.main = {
             type = "disk";
             device = "/dev/vda";
@@ -60,7 +60,7 @@
               ];
             };
           };
-        })
+        }
       ];
     };
   };
