@@ -38,36 +38,70 @@
         ./nixos-modules/source.nix
         musnix.nixosModules.musnix
         disko.nixosModules.disko
+        # {
+        #   disko.devices.disk.main = {
+        #     type = "disk";
+        #     device = "/dev/vda";
+        #     content = {
+        #       type = "gpt";
+        #       partitions = [
+        #         {
+        #           name = "ESP";
+        #           type = "EF00";
+        #           start = "0";
+        #           end = "1G";
+        #           content = {
+        #             type = "filesystem";
+        #             format = "vfat";
+        #             mountpoint = "/boot";
+        #             mountOptions = [ "umask=0077" ];
+        #           };
+        #         }
+        #         {
+        #           name = "root";
+        #           start = "1G";
+        #           end = "100%";
+        #           content = {
+        #             type = "filesystem";
+        #             format = "ext4";
+        #             mountpoint = "/";
+        #           };
+        #         }
+        #       ];
+        #     };
+        #   };
+        # }
         {
           disko.devices.disk.main = {
             type = "disk";
             device = "/dev/vda";
+
             content = {
               type = "gpt";
-              partitions = [
-                {
-                  name = "ESP";
+
+              partitions = {
+                ESP = {
+                  size = "512M";
                   type = "EF00";
-                  start = "0";
-                  end = "1G";
+
                   content = {
                     type = "filesystem";
                     format = "vfat";
                     mountpoint = "/boot";
                     mountOptions = [ "umask=0077" ];
                   };
-                }
-                {
-                  name = "root";
-                  start = "1G";
-                  end = "100%";
+                };
+
+                root = {
+                  size = "100%";
+
                   content = {
                     type = "filesystem";
                     format = "ext4";
                     mountpoint = "/";
                   };
-                }
-              ];
+                };
+              };
             };
           };
         }
