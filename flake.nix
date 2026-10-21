@@ -39,25 +39,29 @@
         musnix.nixosModules.musnix
         disko.nixosModules.disko
         {
-          disko.devices.disk.main = {
-            type = "disk";
-            device = "/dev/disk/by-id/some-disk-id";
-            content = {
-              type = "table";
-              format = "msdos";
-              partitions = [
-                {
-                  name = "root";
-                  start = "0";
-                  end = "100%";
-                  bootable = true;
-                  content = {
-                    type = "filesystem";
-                    format = "ext4";
-                    mountpoint = "/";
-                  };
-                }
-              ];
+          disko.devices {
+            disk = {
+              main = {
+                type = "disk";
+                device = "/dev/vda";
+                content = {
+                  type = "table";
+                  format = "msdos";
+                  partitions = [
+                    {
+                      name = "root";
+                      start = "0";
+                      end = "100%";
+                      bootable = true;
+                      content = {
+                        type = "filesystem";
+                        format = "ext4";
+                        mountpoint = "/";
+                      };
+                    }
+                  ];
+                };
+              };
             };
           };
         }
