@@ -31,7 +31,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, musnix, disko, ... }: {
+  outputs = { self, nixpkgs, home-manager, musnix, disko, ... }@inputs: {
     homeConfigurations.donny = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       extraSpecialArgs = { inherit inputs; };
