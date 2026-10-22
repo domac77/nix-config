@@ -14,21 +14,11 @@
   musnix.enable = true;
   services.keyd.enable = true;
 
+  donny.enable = true;
   nix.settings.trusted-users = [
     "root"
     "donny"
   ];
-
-  users.users.donny = {
-    isNormalUser = true;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "audio"
-    ];
-    home = "/home/donny";
-    initialPassword = "dd";
-  };
 
   services.displayManager.ly.enable = true;
 
