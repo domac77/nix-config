@@ -19,6 +19,17 @@
     "donny"
   ];
 
+  users.users.donny = {
+    isNormalUser = true;
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "audio"
+    ];
+    home = "/home/donny";
+    initialPassword = "dd";
+  };
+
   services.displayManager.ly.enable = true;
 
   # security.sudo.extraConfig = "Default lecture=\"never\"";
