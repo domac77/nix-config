@@ -31,7 +31,6 @@
       partitions = [
         {
           name = "boot";
-          type = "partition";
           start = "1M";
           end = "512M";
           bootable = true;
@@ -43,7 +42,6 @@
         }
         {
           name = "root";
-          type = "partition";
           start = "512M";
           end = "100%";
           content = {
