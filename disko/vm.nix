@@ -5,8 +5,32 @@
     content = {
       type = "table";
       format = "msdos";
-      partitions = {
-        boot = {
+      # partitions = {
+      #   boot = {
+      #     type = "partition";
+      #     start = "1M";
+      #     end = "512M";
+      #     bootable = true;
+      #     content = {
+      #       type = "filesystem";
+      #       format = "ext4";
+      #       mountpoint = "/boot";
+      #     };
+      #   };
+      #   root = {
+      #     type = "partition";
+      #     start = "512M";
+      #     end = "100%";
+      #     content = {
+      #       type = "filesystem";
+      #       format = "ext4";
+      #       mountpoint = "/";
+      #     };
+      #   };
+      # };
+      partitions = [
+        {
+          name = "boot";
           type = "partition";
           start = "1M";
           end = "512M";
@@ -16,8 +40,9 @@
             format = "ext4";
             mountpoint = "/boot";
           };
-        };
-        root = {
+        }
+        {
+          name = "root";
           type = "partition";
           start = "512M";
           end = "100%";
@@ -26,8 +51,8 @@
             format = "ext4";
             mountpoint = "/";
           };
-        };
-      };
+        }
+      ];
     };
   };
 }
