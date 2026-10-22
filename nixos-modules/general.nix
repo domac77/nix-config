@@ -33,6 +33,7 @@ in {
       gcc
       git
       gnupg
+      home-manager
       libnotify
       neovim
       nix-prefetch-git
