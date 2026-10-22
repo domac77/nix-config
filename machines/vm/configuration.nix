@@ -3,8 +3,11 @@
     ./hardware-configuration.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub = {
+    enable = true;
+    device = "/dev/vda";
+  };
+  boot.loader.systemd-boot.enable = false;
 
   general-config.enable = true;
   audio.enable = true;
@@ -18,8 +21,6 @@
 
   services.displayManager.ly.enable = true;
 
-  security.sudo.extraConfig = "Default lecture=\"never\"";
-
+  # security.sudo.extraConfig = "Default lecture=\"never\"";
   system.stateVersion = lib.trivial.release;
-  nixpkgs.hostPlatform = "x86_64-linux";
 }

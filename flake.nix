@@ -36,7 +36,7 @@
       modules = [
         ./machines/vm/configuration.nix
         ./nixos-modules/source.nix
-        (import ./disko.nix { device = "/dev/vda"; })
+        (import ./disko.nix)
         disko.nixosModules.disko
         musnix.nixosModules.musnix
       ];
