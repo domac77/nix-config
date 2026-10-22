@@ -1,0 +1,48 @@
+{ config, lib, pkgs, ... }:
+let
+  cfg = config.fonts;
+in {
+  options.fonts.enable = lib.mkEnableOption "custom font settings";
+
+  config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      material-design-icons
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-color-emoji
+      nerd-fonts.bigblue-terminal
+      nerd-fonts.caskaydia-mono
+      nerd-fonts.droid-sans-mono
+      nerd-fonts.gohufont
+      nerd-fonts.fira-code
+      nerd-fonts.hack
+      nerd-fonts.inconsolata
+      nerd-fonts.iosevka-term
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.liberation
+      nerd-fonts.meslo-lg
+      nerd-fonts.noto
+      nerd-fonts.roboto-mono
+      nerd-fonts.zed-mono
+    ];
+
+    fonts.fontconfig = {
+      enable = true;
+      defaultFonts = {
+        serif = [
+          "Noto Serif"
+          "Noto Color Emoji"
+        ];
+        sansSerif = [
+          "Noto Sans"
+          "Noto Color Emoji"
+        ];
+        monospace = [
+          "JetBrainsMono Nerd Font"
+          "Noto Color Emoji"
+        ];
+        emoji = [ "Noto Color Emoji" ];
+      };
+    };
+  };
+}

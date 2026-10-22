@@ -32,14 +32,35 @@
   };
 
   outputs = { self, nixpkgs, musnix, disko, ... }: {
-    nixosConfigurations.vm = nixpkgs.lib.nixosSystem {
+    homeConfigurations.donny = home-manager.lib.homeManagerConfiguration = {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      extraSpecialArgs = { inherit inputs; };
       modules = [
-        ./machines/vm/configuration.nix
-        ./nixos-modules/source.nix
-        (import ./disko/vm.nix)
-        disko.nixosModules.disko
-        musnix.nixosModules.musnix
+        ./home.nix
+        ./home-modules
       ];
+    };
+
+    nixosConfigurations = {
+      vm = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./machines/vm
+          ./nixos-modules
+          (import ./disko/vm.nix)
+          disko.nixosModules.disko
+          musnix.nixosModules.musnix
+        ];
+      };
+
+      desktop = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./machines/desktop
+          ./nixos-modules
+          (import ./disko/nvme.nix)
+          disko.nixosModules.disko
+          musnix.nixosModules.musnix
+        ];
+      };
     };
   };
 }
