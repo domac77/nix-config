@@ -58,6 +58,7 @@
     ghostty
     gimp
     htop
+    keepassxc
     ncdu
     nixfmt
     obsidian
