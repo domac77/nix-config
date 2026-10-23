@@ -4,7 +4,7 @@ let
 in {
   options.donny.enable = lib.mkEnableOption "my user config";
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     users.users.donny = {
       isNormalUser = true;
       extraGroups = [
