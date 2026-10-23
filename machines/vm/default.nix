@@ -20,6 +20,8 @@
     "donny"
   ];
 
+  programs.hyprland.enable = true;
+
   services.displayManager.ly.enable = true;
 
   # security.sudo.extraConfig = "Default lecture=\"never\"";

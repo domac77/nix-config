@@ -31,9 +31,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, musnix, disko, ... }@inputs: {
+  outputs = { self, nixpkgs, nur, home-manager, musnix, disko, ... }@inputs: {
     homeConfigurations.donny = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        overlays = [ nur.overlays.default ];
+      };
       extraSpecialArgs = { inherit inputs; };
       modules = [
         ./home.nix

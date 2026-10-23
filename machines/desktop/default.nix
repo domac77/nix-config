@@ -17,6 +17,7 @@
   hardware.bluetooth.enable = false;
   networking.networkmanager.enable = true;
   xdg.mime.enable = true;
+  donny.enable = true;
 
   services.udev.packages = [ pkgs.dolphin-emu ];
     boot.extraModulePackages = [
