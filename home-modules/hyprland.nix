@@ -73,7 +73,7 @@ in
       enable = true;
       xwayland.enable = true;
       settings = {
-        inherit (cfg) monitor;
+        # inherit (cfg) monitor;
         gestures.workspace_swipe = true;
         master.mfact = 0.5;
         misc.force_default_wallpaper = 0;

@@ -1,4 +1,0 @@
-- firefox
-- graphic folder
-- home manager
-- theming

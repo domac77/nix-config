@@ -5,6 +5,11 @@
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
 
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+  };
+
   misc = {
     fonts.enable = true;
     firefox.enable = true;
@@ -85,7 +90,7 @@
         "${config.services.mako.package}/bin/mako"
       ];
 
-      monitor = [ "eDP-1, 1920x1080@60,0x0,1" ];
+      # monitor = [ "eDP-1, 1920x1080@60,0x0,1" ];
 
       extraKeybindings = [
         "SUPER, RETURN, exec, alacritty"

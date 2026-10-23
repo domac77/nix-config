@@ -31,7 +31,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, musnix, disko, ... }@inputs: {
+  outputs = { self, nixpkgs, nur, home-manager, musnix, disko, stylix, ... }@inputs: {
     homeConfigurations.donny = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -41,6 +41,7 @@
       modules = [
         ./home.nix
         ./home-modules
+        stylix.homeModules.stylix
       ];
     };
 

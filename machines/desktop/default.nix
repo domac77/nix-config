@@ -3,11 +3,20 @@
     ./hardware-configuration.nix
   ];
 
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vpl-gpu-rt
+    ];
+  };
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi = {
     canTouchEfiVariables = true;
     efiSysMountPoint = "/boot";
   };
+
+  services.displayManager.ly.enable = true;
 
   general-config.enable = true;
   audio.enable = true;
@@ -19,30 +28,25 @@
   xdg.mime.enable = true;
   donny.enable = true;
 
-  services.udev.packages = [ pkgs.dolphin-emu ];
-    boot.extraModulePackages = [
-      config.boot.kernelPackages.gcadapter-oc-kmod
-    ];
-
-    # to autoload at boot
-    boot.kernelModules = [
-      "gcadapter_oc"
-    ];
-  };
-
   nix.settings.trusted-users = [
     "root"
     "donny"
   ];
 
+  services.udev.packages = [ pkgs.dolphin-emu ];
+  boot.extraModulePackages = [
+    config.boot.kernelPackages.gcadapter-oc-kmod
+  ];
+  boot.kernelModules = [
+    "gcadapter_oc"
+  ];
+
+  services.printing.drivers = [ pkgs.hplipWithPlugin ];
   services.avahi = {
     enable = true;
     nssmdns4 = true;
     openFirewall = true;
   };
-  services.printing.drivers = [ pkgs.hplipWithPlugin ];
-
-  services.displayManager.ly.enable = true;
 
   system.stateVersion = lib.trivial.release;
 }
