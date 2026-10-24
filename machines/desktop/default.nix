@@ -22,8 +22,7 @@
   audio.enable = true;
   musnix.enable = true;
   services.keyd.enable = true;
-  networking.networkmanager.enable = true;
-  hardware.bluetooth.enable = false;
+  hardware.bluetooth.enable = true;
   networking.networkmanager.enable = true;
   xdg.mime.enable = true;
   donny.enable = true;
