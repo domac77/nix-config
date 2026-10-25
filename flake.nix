@@ -32,7 +32,7 @@
   };
 
   outputs = { self, nixpkgs, nur, home-manager, musnix, disko, stylix, ... }@inputs: {
-    homeConfigurations.donny = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations.desktop = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         overlays = [ nur.overlays.default ];
