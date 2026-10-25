@@ -33,19 +33,6 @@
   };
 
   home.packages = [
-    # Window manager related packages (maybe move into specific module)
-    bluetuith
-    brightnessctl
-    grim
-    imv
-    pavucontrol
-    pcmanfm
-    playerctl
-    polkit_gnome
-    slurp
-    wl-clipboard
-    wlr-randr
-
     ani-cli
     anki
     audacity
@@ -81,7 +68,8 @@
 
   desktop = {
     hyprland = {
-      enable = false;
+      enable = true;
+      nixosEnabled = true;
       enableAnimations = true;
       enableBlur = true;
       blurSize = 10;
@@ -91,7 +79,7 @@
         "${config.services.mako.package}/bin/mako"
       ];
 
-      # monitor = [ "eDP-1, 1920x1080@60,0x0,1" ];
+      monitor = [ "DP-1, 1920x1080@144,0x0,1" ];
 
       extraKeybindings = [
         "SUPER, RETURN, exec, alacritty"

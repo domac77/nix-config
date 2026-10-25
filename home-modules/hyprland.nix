@@ -22,6 +22,7 @@ in
     enable = mkEnableOption "Enable Hyprland";
     enableAnimations = mkEnableOption "Hyprland animations";
     enableBlur = mkEnableOption "Enable blur transparency";
+    nixosEnabled = mkEnableOption "Disable package and portalPackage if nixos module is enabled";
     extraKeybindings = createListOfStringsOption "Custom Hyprland keybindings";
     windowRules = createListOfStringsOption "Set window rules";
     monitor = createListOfStringsOption "List of monitors to be used";
@@ -52,7 +53,6 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       bluetuith
-      brightnessctl
       grim
       imv
       pavucontrol
@@ -73,7 +73,7 @@ in
       enable = true;
       xwayland.enable = true;
       settings = {
-        # inherit (cfg) monitor;
+        inherit (cfg) monitor;
         gestures.workspace_swipe = true;
         master.mfact = 0.5;
         misc.force_default_wallpaper = 0;
@@ -165,8 +165,8 @@ in
           ", xf86audioplay, exec, playerctl play-pause"
           ", xf86audionext, exec, playerctl next"
           ", xf86audioprev, exec, playerctl previous"
-          ", xf86monbrightnessup, exec, brightnessctl set +2%"
-          ", xf86monbrightnessdown, exec, brightnessctl set 2%-"
+          # ", xf86monbrightnessup, exec, brightnessctl set +2%"
+          # ", xf86monbrightnessdown, exec, brightnessctl set 2%-"
         ];
 
         bindm = [
@@ -183,6 +183,9 @@ in
           ];
         };
       };
+    } // mkIf cfg.nixosEnabled {
+      package = null;
+      portalPackage = null;
     };
   };
 }
