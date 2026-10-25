@@ -121,7 +121,21 @@
       barHeight = 30;
       terminal = "alacritty";
       soundControl = "pavucontrol";
-      wmModules = [ "hyprland/workspaces" ];
+      monitors = [ "DP-1" ];
+
+      wmModules = [
+        "hyprland/workspaces"
+        "hyprland/window"
+      ];
+
+      rightModules = [
+        "tray"
+        "network"
+        "disk"
+        "memory"
+        "pulseaudio"
+        "clock"
+      ];
 
       font = {
         name = "JetBrainsMonoNerdFont";

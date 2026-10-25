@@ -7,6 +7,7 @@ let
     types
     ;
   cfg = config.graphic.waybar;
+
   createNullOrStringOption =
     description:
     mkOption {
@@ -14,13 +15,23 @@ let
       default = null;
       inherit description;
     };
+
+  createListOfStringsOption =
+  description:
+  mkOption {
+    type = types.listOf types.str;
+    default = [ ];
+    inherit description;
+  };
 in
 {
   options.graphic.waybar = {
     enable = mkEnableOption "Enable Waybar";
     terminal = createNullOrStringOption "Terminal for clickable modules to use";
     soundControl = createNullOrStringOption "Sound control program for clickable modules to use";
-    wmModules = myLib.createListOfStringsOption "Modules specific to the current compositor";
+    wmModules = createListOfStringsOption "Modules specific to the current compositor";
+    rightModules = createListOfStringsOption "Modules on the right-hand side";
+    monitors = createListOfStringsOption "Monitors to be displayed on"
 
     barHeight = mkOption {
       type = types.int;
@@ -50,27 +61,14 @@ in
   config = mkIf cfg.enable {
     programs.waybar = {
       enable = true;
-      # systemd.enable = true;
+      systemd.enable = true;
       settings = {
         mainBar = {
           layer = "top";
           position = cfg.barPosition;
           height = cfg.barHeight;
-          output = [
-            "eDP-1"
-            "HDMI-A-1"
-          ];
           modules-left = cfg.wmModules;
-          modules-right = [
-            "tray"
-            "network"
-            "battery"
-            "disk"
-            "memory"
-            "backlight"
-            "pulseaudio"
-            "clock"
-          ];
+          modules-right = cfg.rightModules;
 
           backlight = {
             format = "{icon} {percent}%";

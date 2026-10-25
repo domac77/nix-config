@@ -64,11 +64,6 @@ in
       wlr-randr
     ];
 
-    graphic.waybar.wmModules = [
-      "hyprland/workspaces"
-      "hyprland/window"
-    ];
-
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
@@ -81,7 +76,7 @@ in
 
         exec-once = [
           (mkIf config.graphic.waybar.enable "waybar")
-          # "brightnessctl set 9600"
+          "${config.services.mako.package}/bin/mako"
         ]
         ++ cfg.startupCommands;
 
