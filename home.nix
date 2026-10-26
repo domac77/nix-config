@@ -77,8 +77,7 @@
       blurSize = 10;
       roundBorders.enable = true;
       startupCommands = [
-        # "${pkgs.swaybg}/bin/swaybg -i ${config.theme.wallpaper}"
-        "${config.services.mako.package}/bin/mako"
+        "${pkgs.swaybg}/bin/swaybg -i ${inputs.wallpapers + "/country_sunset.jpg"} -m fill"
       ];
 
       monitor = [ "DP-1, 1920x1080@144,0x0,1" ];
