@@ -21,8 +21,7 @@ in
       font = {
         size = 13.5;
         normal = {
-          family = (if config.fonts.enable then "ZedMonoNerdFont" else "monospace");
-          # family = "ZedMonoNerdFont";
+          family = if config.fonts.enable then "ZedMonoNerdFont" else "monospace";
           style = "Normal";
         };
       };
