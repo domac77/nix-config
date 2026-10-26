@@ -77,7 +77,6 @@ in
         exec-once = [
           (mkIf config.graphic.waybar.enable "waybar")
           "${config.services.mako.package}/bin/mako"
-          "${pkgs.swaybg}/bin/swaybg -i ${inputs.wallpapers + "/country_sunset.jpg"} -m fill"
         ]
         ++ cfg.startupCommands;
 
