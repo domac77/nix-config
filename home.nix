@@ -64,6 +64,8 @@
     zip
     zotero
     zig
+
+    (inputs.neovim-flake.packages.default)
   ];
 
   desktop = {
