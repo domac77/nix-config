@@ -439,7 +439,8 @@
         "neovim-flake": "neovim-flake",
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "wallpapers": "wallpapers"
       }
     },
     "stylix": {
@@ -569,6 +570,22 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "base16-zed",
+        "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1707102447,
+        "narHash": "sha256-Ohsv+H/fldiBmaPwAQAcytLcHYSEeLCw75aIdAcwIHE=",
+        "owner": "domac77",
+        "repo": "wallpaper-collection",
+        "rev": "2d9e7795fe40b8371a5f2c3699d8e61cf08dbb0c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "domac77",
+        "repo": "wallpaper-collection",
         "type": "github"
       }
     }
