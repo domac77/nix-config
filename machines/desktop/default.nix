@@ -52,6 +52,8 @@
     "gcadapter_oc"
   ];
 
+  services.udisks2.enable = true;
+
   services.printing.drivers = [ pkgs.hplipWithPlugin ];
   services.avahi = {
     enable = true;
