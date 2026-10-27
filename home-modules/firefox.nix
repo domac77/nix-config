@@ -7,7 +7,7 @@ let
     settings = builtins.fromJSON (builtins.readFile (
       builtins.fetchurl {
         url = "https://raw.githubusercontent.com/yokoffing/Betterfox/refs/heads/main/user.js";
-        hash = lib.fakeSha256;
+        hash = "0h2j5lsv07r81qp8ysjg3d9i9cdzhjw9ip96mxxrh9ajn73p3a9q";
       }
     ));
 
